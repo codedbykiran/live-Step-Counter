@@ -2,20 +2,20 @@ let steps = 0;
 const stepCountEl = document.getElementById("step-count");
 const resetBtn = document.getElementById("reset");
 
-let lastX = 0, lastY = 0, lastZ = 0;
+let NewX = 0, NewY = 0, NewZ = 0;
 let threshold = 12; 
 function handleMotion(event) {
   const { x, y, z } = event.accelerationIncludingGravity;
-  const diff = Math.abs(x - lastX) + Math.abs(y - lastY) + Math.abs(z - lastZ);
+  const diff = Math.abs(x - NewX) + Math.abs(y - NewY) + Math.abs(z - NewZ);
 
   if (diff > threshold) {
     steps++;
     stepCountEl.textContent = `${steps} Steps`;
   }
 
-  lastX = x;
-  lastY = y;
-  lastZ = z;
+  NewX = x;
+  NewY = y;
+  NewZ = z;
 }
 
 if (window.DeviceMotionEvent) {
